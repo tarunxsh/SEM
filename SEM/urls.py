@@ -16,6 +16,11 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path,include
 
+
+admin.site.site_header = 'Smart Meter Monitoring Admin'
+admin.site.site_title = 'Smart Meter Admin'
+admin.site.index_title = '[SEM]Smart Energy Meter'
+
 urlpatterns = [
     path('', admin.site.urls),
     path('',include('meters.urls'))

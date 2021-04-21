@@ -14,3 +14,7 @@ def pulse(request,m_id , rdg):
 	# return HttpResponse("<h1>smart meter app {},{}</h1>".format(m_id,rdg))
 	data  = {'mtr': m_id,'owner' : mtr.owner.username,'total' : total["reading__sum"]}
 	return JsonResponse(data)
+
+
+def charts(request, m_id):
+	return render(request,"meters/charts.html")
