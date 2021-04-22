@@ -22,6 +22,6 @@ admin.site.site_title = 'Smart Meter Admin'
 admin.site.index_title = '[SEM]Smart Energy Meter'
 
 urlpatterns = [
+    path('meter/',include('meters.urls')),
     path('', admin.site.urls),
-    path('',include('meters.urls'))
 ]

@@ -11,7 +11,6 @@ def pulse(request,m_id , rdg):
 	addReading.save()
 	total = Readings.objects.filter(meter=mtr).aggregate(Sum('reading'))
 
-	# return HttpResponse("<h1>smart meter app {},{}</h1>".format(m_id,rdg))
 	data  = {'mtr': m_id,'owner' : mtr.owner.username,'total' : total["reading__sum"]}
 	return JsonResponse(data)
 
