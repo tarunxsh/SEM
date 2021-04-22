@@ -39,6 +39,10 @@ class MeterAdmin(admin.ModelAdmin):
 			self.admin_site.each_context(request),
 			# Anything else you want in the context...
 			meter=m_id,
+			owner=meter.owner.first_name,
+			units=self.units(meter),
+			amount=self.amount(meter),
+			due="30-04-2021",
 			data = list(data.items())
 			)
 		return TemplateResponse(request, "admin/charts.html", context)

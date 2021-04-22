@@ -1,5 +1,21 @@
 {% extends "admin/base_site.html" %}
 
+
+{% block extrastyle %}
+<style type="text/css">
+.tg  {border-collapse:collapse;border-color:#9ABAD9;border-spacing:0;}
+.tg td{background-color:#EBF5FF;border-color:#9ABAD9;border-style:solid;border-width:1px;color:#444;
+  font-family:Arial, sans-serif;font-size:14px;overflow:hidden;padding:10px 5px;word-break:normal;}
+.tg th{background-color:#409cff;border-color:#9ABAD9;border-style:solid;border-width:1px;color:#fff;
+  font-family:Arial, sans-serif;font-size:14px;font-weight:normal;overflow:hidden;padding:10px 5px;word-break:normal;}
+.tg .tg-baqh{text-align:center;vertical-align:top}
+.tg .tg-c3ow{border-color:inherit;text-align:center;vertical-align:top}
+.tg .tg-svo0{background-color:#D2E4FC;border-color:inherit;text-align:center;vertical-align:top}
+.tg .tg-j0tj{background-color:#D2E4FC;text-align:center;vertical-align:top}
+</style>
+{% endblock %}
+
+
 {% block extrahead %}
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.css" />
   <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.bundle.min.js"></script>
@@ -10,6 +26,36 @@
   <div style="width: 80%;">
       <canvas style="margin-bottom: 30px; width: 60%; height: 50%;" id="myChart"></canvas>
   </div> 
+
+  <table class="tg">
+<thead>
+  <tr>
+    <th class="tg-0pky" colspan="2">Electricity Usage Charges</th>
+  </tr>
+</thead>
+<tbody>
+  <tr>
+    <td class="tg-0pky">Name</td>
+    <td class="tg-0pky">{{owner}}</td>
+  </tr>
+  <tr>
+    <td class="tg-0pky">Meter ID</td>
+    <td class="tg-0pky">{{meter}}</td>
+  </tr>
+  <tr>
+    <td class="tg-0pky">UNITS</td>
+    <td class="tg-0pky">{{units}}</td>
+  </tr>
+  <tr>
+    <td class="tg-0lax">Amount</td>
+    <td class="tg-0lax">{{amount}}</td>
+  </tr>
+  <tr>
+    <td class="tg-0lax">Due Date</td>
+    <td class="tg-0lax">{{due}}</td>
+  </tr>
+</tbody>
+</table>
   <script>
 document.addEventListener('DOMContentLoaded', () => {
   const ctx = document.getElementById('myChart').getContext('2d');
