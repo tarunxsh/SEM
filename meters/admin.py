@@ -47,7 +47,8 @@ class MeterAdmin(admin.ModelAdmin):
 
 	def Pulses(self,obj):
 		total_pulses = Readings.objects.filter(meter=obj).aggregate(Sum('reading'))
-		return total_pulses["reading__sum"]
+		total_pulses = total_pulses["reading__sum"]
+		return total_pulses if total_pulses else 0
 	
 	def units(self,obj):
 		pulses = self.Pulses(obj)
