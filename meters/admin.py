@@ -50,7 +50,10 @@ class MeterAdmin(admin.ModelAdmin):
 		return total_pulses["reading__sum"]
 	
 	def units(self,obj):
-		total_Units = self.Pulses(obj)/3200
+		pulses = self.Pulses(obj)
+		if pulses == None:
+			return 0;
+		total_Units = pulses/3200
 		return total_Units
 
 
