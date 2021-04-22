@@ -114,7 +114,10 @@ USE_I18N = True
 
 USE_L10N = True
 
-USE_TZ = True
+
+# if enabled django will Store time in UTC but render in TIME_ZONE
+# if disabled TIME_ZONE is used both to store and render
+# USE_TZ = True
 
 
 # Static files (CSS, JavaScript, Images)
