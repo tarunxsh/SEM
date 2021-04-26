@@ -22,15 +22,13 @@ class MeterAdmin(admin.ModelAdmin):
 
 	def analyse(self, request, m_id):
 		meter = Meter.objects.get(pk=m_id)
-		readings = Readings.objects.filter(meter=meter)
-		data = {}
-		for pulse in range(len(readings)):
-			time  = readings[pulse].time_stamp.strftime("%m/%d/%Y")
-			if data.get(time,None)==None:
-				data[time] = readings[pulse].reading
-			else:
-				data[time]+=readings[pulse].reading 
-
+		readings = Readings.objects.filter(meter=meter).order_by('time_stamp')
+		
+		from collections import defaultdict
+		data = defaultdict(int)
+		for pulse in readings:
+			time  = pulse.time_stamp.strftime("%m/%d/%Y")
+			data[time] += pulse.reading
 
 		print(list(data.items()))
 		# ...
